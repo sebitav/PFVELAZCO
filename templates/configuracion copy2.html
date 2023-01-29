@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="./css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="./css/simulador/config.css" rel="stylesheet">
+
+    <!-- Resources Amcharts-->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+    <title>Simulador C1G6 | Configuración</title>
+</head>
+<body>
+    <!--Cabecera-->
+    <nav class="navbar navbar-dark white">
+        <a class="navbar-brand" href="./index.html">
+            <img src="./img/utnlogo.png" height="80" alt="utn-logo">
+        </a>
+        <h2 class="lead blue-grey-text pl-5 col-md-8"><strong>Simulador de Planificación de procesos - Grupo C1G6</strong></h2>   
+    </nav>
+    <!--Cabecera-->
+    
+    <!--MENU-->
+    <div class="container-fluid mt-4">
+        <ul class="nav nav-tabs nav-justified row py-2">   
+            <div class="col-sm-12 col-md-3">
+                <li class="nav-item">
+                    <a class="text-black-50" href ="./configuracion.html">
+                        <button class="btn btn-outline-light-blue z-depth-0 waves-effect m-0">Nueva Configuración</button>
+                        <span class="sr-only">(current)</span>
+                    </a>    
+                </li> 
+            </div>
+            <div class="col-sm-12 col-md-3">
+                <li class="nav-item">
+                    <a id="config-btna" class="nav-link active text-primary border-primary border-bottom-0 d-flex justify-content-center">Configuración</a>
+                </li>
+            </div>
+            <div class="col-sm-12 col-md-3">
+                <li class="nav-item">
+                    <a id="process-btna" class="nav-link active" href="#">Carga de Procesos</a>
+                </li>
+            </div>
+            <div class="col-sm-12 col-md-3">
+                <li class="nav-item">
+                    <a id="presentation-btna" class="nav-link active" href="#">Presentación</a>
+                </li> 
+            </div>       
+        </ul>
+    </div>   
+    <!--MENU-->
+
+    <!--Configuracion del planificador-->
+    <div class="container-fluid" id="#configuracion">
+        <div class="row">
+            <div class="col-sm-12 mt-2 d-flex justify-content-center">
+                <div class="alert alert-danger alert-dismissible fade hide alertMemory d-flex justify-content-center m-0 px-3 w-50" role="alert">
+                    <strong class="textoAlertMemory px-auto">Error, No puede ingresar mas particiones.</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div> 
+            </div>
+            <!--Form de Configuracion-->
+            <div class="col-sm-12 col-md-6 px-0">
+                <form class="md-form input-group mt-2" role="form" autocomplete="off">
+                    <div class="col-md-12 d-flex align-items-center flex-column px-4">
+                        <!--Card content-->
+                        <div class="card" id="card-memory">
+                            <h5 class="card-header blue-grey lighten-1 white-text text-center py-4 mb-5">
+                                <strong>Configuración del Planificador</strong>
+                            </h5>     
+                            <div class="card-body px-lg-5 pt-0 memorySelect">
+                                <div class="row mt-2 ml-1">
+                                    <span class="col-md-12 px-0 lead">Política de Planificación</span>
+                                    <select class="col-md-6 browser-default custom-select mr-3 mt-3 mb-3" id="optionAlgo">
+                                        <option value="" disabled selected>Selecciona</option>
+                                        <option class="optionPlaningOne" value="FCFS">FCFS</option>
+                                        <option class="optionPlaningTwo" value="RR">Round Robin</option>
+                                        <option class="optionPlaningThree" value="Prioridades">Prioridades</option>
+                                        <option class="optionPlaningFour" value="SJF">Prioridades SJF</option>
+                                        <option class="optionPlaningFive" value="SRTF">Prioridades SRTF</option>
+                                        <option class="optionPlaningSix" value="Multinivel">Multinivel sin Retro</option>         
+                                    </select> 
+                                    <div class="col-md-4 text-center fade hide alertRR ml-3 mt-3 px-0 quantumIn" id="quantumid">
+                                        <input type="text" class="form-control" placeholder="Quantum">
+                                    </div>
+                                </div>
+
+                                <span class="lead">Tamaño de la Memoria</span>
+                                <div class="md-form my-3">
+                                    <input type="number" min=1 max=8192 id="tam-memory" class="form-control w-75">
+                                    <label for="numberExample">Definir tamaño en MB</label>
+                                </div>
+                                <p class="text-muted">El tamaño máximo de la memoria es de 8192 MB.</p>
+
+                                <span class="lead">Tamaño de la Memoria</span>
+                                <div class="md-form my-3">
+                                    <input type="number" min=1 max=8192 id="tam-memory" class="form-control w-75">
+                                    <label for="numberExample">Definir tamaño en MB</label>
+                                </div>
+                                <p class="text-muted">El tamaño máximo de la memoria es de 8192 MB.</p>
+                                
+                                <div id="btn-hide" class="row mt-4 mb-3">
+                                    <span class="col-md-12 lead">Tipo de Memoria</span>
+                                    <select class="col-md-6 browser-default custom-select mt-3 mx-3" id="optionType" name="tipo_memoria">
+                                        <option value="" disabled selected>Selecciona</option>
+                                        <option class="optionTypeTwo" value="Variable">Variable</option>
+                                        <option class="optionTypeOne" value="Fija">Fija</option>
+                                    </select> 
+                                    <div class="col-md-4 text-center fade hide alertMem mt-2 ml-1 px-0">
+                                        <!-- <a id="btn-parts" class="btn btn-outline-default mx-4 my-2 p-2 waves-effect waves-light" data-toggle="modal" data-target="#modalLoginForm">Particiones</a> -->
+                                        <a id="btn-parts" class="btn btn-outline-light-blue p-2 waves-effect waves-light disabled">Particiones</a>
+                                    </div>
+                                </div>
+                                <div class="row mt-4 row">
+                                <span class="lead col-sm-12 ml-3 p-0">Ajuste de la Memoria</span>
+                                <select class="col-md-6 browser-default custom-select mx-3 mt-3" id="optionSet" name="algoritmo_memoria">
+                                    <option value="" disabled selected>Selecciona</option>
+                                    <option class="optionFitThree" value="First Fit">First Fit</option>
+                                    <option class="optionFitTwo" value="Worst Fit">Worst Fit</option>
+                                    <option class="optionFitOne" value="Best Fit">Best Fit</option>
+                                </select>
+                                </div>
+                            </div>
+                            <!--Confirmar formulario--> 
+                            <div class="mb-3 d-flex justify-content-center" >
+                                <a id="btnconfirmar" class="btn btn-outline-light-blue z-depth-0 waves-effect w-75" type="submit">Confirmar</a>  
+                            </div>
+                            <!--Confirmar formulario--> 
+                        </div>
+                        <!--Card content-->           
+                    </div>
+                </form>
+            </div>
+            <!--Form de Configuracion-->  
+            <!--Form de Particiones Fijas-->
+            <div class="col-sm-12 col-md-6 px-0">
+                <form class="md-form input-group mt-2" id="form-fijas" role="form" autocomplete="off">     
+                    <div class="col-sm-12 col-md-12 px-4">
+                        <!--Generación de Particiones-->
+                        <div class="card d-none" id="partfijas">
+                            <h5 class="card-header blue-grey lighten-1 white-text text-center py-4 mb-4">
+                                <strong>Generación de Particiones</strong>
+                            </h5>     
+                            <div class="card-body px-lg-5 pt-0 memorySelect">
+                                <div class="mt-2 alert alert-info alert-dismissible fade hide alertMem d-none" role="alert">
+                                    <strong class="textoAlertMem">Si desea agregar nuevas particiones, por favor realice una nueva configuración</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <span class="lead" id="memoria"></span> 
+                                        <span class="lead" id="disponible"></span> 
+                                        <span class="lead" id="porcentajeDef"></span><br> 
+                                        <span class="lead" id="porcentajeTotal"></span>
+                                    </div>
+                                    <div class="col-sm-12 col-md-8 mt-3">
+                                        <div class="md-form">
+                                            <input type="number" min=1 max=4096 id="cantpart" class="form-control w-75">
+                                            <label for="numberExample">Particiones</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 p-0 d-flex justify-content-center">
+                                        <button class="btn btn-outline-light-blue z-depth-0 waves-effect btn-block my-4 btn-add-part" type="button">Agregar</button>  
+                                    </div>
+                                </div> 
+                                <div class="controls mt-3 d-none" id="controlidpart">
+                                    <div class="entry input-group-prepend row inputMemory d-flex justify-content-center" id="add-field">
+                                    </div>
+                                </div>
+                            
+                                <div class="alert alert-danger alert-dismissible fade hide alertPart" role="alert">
+                                    <strong class="textoAlertPart">Error, No puede ingresar mas particiones.</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>   
+                            
+                            <!--Confirmar formulario--> 
+                            <div class="d-flex justify-content-center" id="btn-asignar">
+                                <button class="btn btn-outline-light-blue z-depth-0 waves-effect w-75" type="button">Asignar</button>  
+                            </div>
+                            <!--Confirmar formulario--> 
+                            </div> 
+                        </div>
+                        <!--Generación de Particiones--> 
+                    </div>  
+                </form>
+            </div> 
+            <!--Form de Particiones Fijas--> 
+        </div>
+    </div>
+    <!--Configuracion del planificador-->    
+
+    <!-- Footer -->
+    <footer class="page-footer font-small text-black-50 blue-grey lighten-5 pt-4 w-100 border">
+       <!-- Footer Links -->
+       <div class="container-fluid text-center text-md-left">
+           <!-- Grid row -->
+           <div class="row">
+           <!-- Grid column -->
+           <div class="col-md-6 mt-md-0 mt-3"> 
+               <!-- Content -->
+               <h5 class="lead font-weight-bold">Trabajo Práctico Integrador</h5>
+               <p class="pt-3"><strong>Desarrollado para la catedra Sistemas Operativos del 3° año de </strong> </p> 
+               <p><strong> Ingeniería en Sistemas de la UTN-FRRE.</strong></p>  
+           </div>
+           <!-- Grid column --> 
+           <hr class="clearfix w-100 d-md-none pb-3">   
+           <!-- Grid column -->
+           <div class="col-md-3 mb-md-0 mb-3">     
+               <!-- Links -->
+               <h5 class="lead font-weight-bold">Profesores</h5>
+       
+               <ul class="list-unstyled">
+               <li>
+                   <strong>Liliana Cuny Cuenta Pletsch</strong> 
+               </li>
+               <li>
+                   <strong>Sergio Gramajo</strong> 
+               </li>
+               <li>
+                   <strong>Alberto Ristoff</strong> 
+               </li>
+               <li>
+                   <strong>Jorge Roa</strong> 
+               </li>
+               </ul> 
+           </div>
+           <!-- Grid column -->
+       
+           <!-- Grid column -->
+           <div class="col-md-3 mb-md-0 mb-3">  
+               <!-- Links -->
+               <h5 class="lead font-weight-bold">Alumnos</h5>
+       
+               <ul class="list-unstyled">
+               <li>
+                   <a class="text-black-50" href="https://www.linkedin.com/in/rodrigo-daniel-cerdan-/"> <strong>Cerdan Rodrigo</strong></a>
+               </li>
+               <li>
+                   <a class="text-black-50" href="#!"><strong>Duarte Elias</strong></a>
+               </li>
+               <li> 
+                   <a class="text-black-50" href="#!"><strong>Perez Carla</strong></a>
+               </li>
+               <li>
+                   <a class="text-black-50" href="https://ar.linkedin.com/in/sandinosanchez?trk=people-guest_profile-result-card_result-card_full-click"><strong>Sanchez Sandino</strong></a>
+               </li>
+               <li>
+                   <a class="text-black-50" href="#!"><strong>Silva Otto</strong></a>
+               </li>
+               </ul>   
+           </div>
+           <!-- Grid column -->      
+           </div>
+           <!-- Grid row -->       
+       </div>
+       <!-- Footer Links -->
+       
+       <!-- Copyright -->
+       <div class="footer-copyright text-center py-3 blue-grey lighten-3 text-black-50">© 2019 Copyright:
+           <a href="http://www.frre.utn.edu.ar"> UTN-FRRE</a>
+       </div>
+       <!-- Copyright -->     
+    </footer>
+    <!-- Footer -->
+   
+    <!-- SCRIPTS -->    
+    <!-- JQuery -->
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="./js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="./js/mdb.min.js"></script>
+    <!-- Project Scripts --> 
+    <script src="./js/simulador/inicio.js"></script>
+    <script src="./js/simulador/config.js"></script>
+    <!-- SCRIPTS -->
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="./css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="./css/simulador/config.css" rel="stylesheet">
+
+    <!-- Resources Amcharts-->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+    <title>Simulador C1G6 | Configuración</title>
+</head>
+<body>
+    <!--Cabecera-->
+    <nav class="navbar navbar-dark white">
+        <a class="navbar-brand" href="./index.html">
+            <img src="./img/utnlogo.png" height="80" alt="utn-logo">
+        </a>
+        <h2 class="lead blue-grey-text pl-5 col-md-8"><strong>Simulador de Planificación de procesos - Grupo C1G6</strong></h2>   
+    </nav>
+    <!--Cabecera-->
+
+  <!--MENU-->
+  <div class="container-fluid mt-4">
+      <ul class="nav nav-tabs nav-justified row py-2">   
+          <div class="col-sm-12 col-md-3">
+              <li class="nav-item">
+                  <a class="text-black-50" href ="./configuracion.html">
+                      <button class="btn btn-outline-light-blue z-depth-0 waves-effect m-0">Nueva Configuración</button>
+                      <span class="sr-only">(current)</span>
+                  </a>    
+              </li> 
+          </div>
+          <div class="col-sm-12 col-md-3">
+              <li class="nav-item">
+                  <a id="config-btnb" class="nav-link active d-flex justify-content-center" href="#">Configuración</a>
+              </li>
+          </div>
+          <div class="col-sm-12 col-md-3">
+              <li class="nav-item">
+                  <a id="process-btnb" class="nav-link active text-primary border-primary border-bottom-0" href="./procesos.html">Carga de Procesos</a>
+              </li>
+          </div>
+          <div class="col-sm-12 col-md-3">
+              <li class="nav-item">
+                  <a id="presentation-btnb" class="nav-link active" href="#">Presentación</a>
+              </li> 
+          </div>       
+      </ul>
+  </div>   
+  <!--MENU-->
+
+<div class="tab-pane" id="visualizacionb" role="tabpanel" aria-labelledby="contact-tab">
+  <div class="col-sm-12 col-lg-12">
+      <div class="my-3 card border-blue-grey">
+          <div class="card-header blue-grey lighten-1 text-white lead">
+            Configuración del Planificador
+          </div>
+          <div class="card-body">
+              <div class="row d-flex justify-content-center">
+                <div class="col-sm-12 col-lg-3">
+                    <button type="button" class="btn btn-primary" disabled>Tamaño</button>
+                    <button type="button" class="btn btn-outline-light-blue ml-4 tamInfo" disabled></button>
+                </div>
+                <div class="col-sm-12 col-lg-3">
+                    <button type="button" class="btn btn-primary" disabled>Memoria</button>
+                    <button type="button" class="btn btn-outline-light-blue ml-4 memInfo" disabled></button>
+                </div>
+                <div class="col-sm-12 col-lg-3">  
+                    <button type="button" class="btn btn-primary" disabled>Ajuste</button>
+                    <button type="button" class="btn btn-outline-light-blue ml-4 ajuInfo" disabled></button>
+                </div>
+                <div class="col-sm-12 col-lg-3">
+                    <button type="button" class="btn btn-primary" disabled>Algoritmo</button>
+                    <button type="button" class="btn btn-outline-light-blue ml-4 algoInfo" disabled></button>
+                </div>
+                <div id="config_part" class="col-sm-12 col-lg-3">
+                </div>
+                <div id="config_part_size" class="col-sm-12 col-lg-3">
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 mt-2 d-flex justify-content-center">
+      <div class="alert alert-danger alert-dismissible fade hide alertProcs px-3 m-0 mb-3 ml-5 w-50" role="alert">
+          <strong class="textoAlertProcs d-flex justify-content-center">Error, No puede ingresar mas particiones.</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div> 
+  </div>
+  <div class="col-sm-12 col-md-5 p-0 pl-4">
+    <div>
+        <h1 class="mr-4 ml-1 d-flex justify-content-center">Mapa de Memoria</h1>
+    </div>
+    <div id="chartdiv" class="">
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-7">
+      <div class="card mb-4 p-0 mt-3 mx-2">
+          <h2 class="card-header blue-grey lighten-1 text-center text-white py-4">Tabla de Procesos</h2>
+          <div class="card-body px-2">
+            <div id="tableID" class="table-editable">
+              <span class="table-add float-right my-2 mr-2">
+                <a href="#!" class="text-success d-flex justify-content-start" id="btn-añadir"> 
+                  <p class="lead mr-2">Agregar Proceso</p>
+                  <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
+                </a>
+              </span>
+              <table class="table table-bordered table-hover table-responsive-lg w-100 text-center">
+                <thead class="text-white mdb-color lighten-2">
+                  <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Tamaño (MB)</th>
+                    <th class="text-center">T. de Arribo</th>
+                    <th class="text-center">CPU</th>
+                    <th class="text-center">E/S</th>
+                    <th class="text-center">CPU</th>
+                    <th class="text-center">Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyID">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+  </div>
+  <div class="col-sm-12 col-md-12 mt-3 mb-2 pl-5 d-flex justify-content-center btn-c">
+      <a class="btn btn-outline-blue-grey text-white fadeInLeft wow rgba-black-light z-depth-0 waves-effect w-25" type="submit" id="btnconfirmar2">Confirmar</a>  
+  </div>
+</div>
+
+  <!-- Footer -->
+  <footer class="page-footer font-small text-black-50 blue-grey lighten-5 pt-4 w-100 border">
+      <!-- Footer Links -->
+      <div class="container-fluid text-center text-md-left">
+          <!-- Grid row -->
+          <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-6 mt-md-0 mt-3"> 
+              <!-- Content -->
+              <h5 class="lead font-weight-bold">Trabajo Práctico Integrador</h5>
+              <p class="pt-3"><strong>Desarrollado para la catedra Sistemas Operativos del 3° año de </strong> </p> 
+              <p><strong> Ingeniería en Sistemas de la UTN-FRRE.</strong></p>  
+          </div>
+          <!-- Grid column --> 
+          <hr class="clearfix w-100 d-md-none pb-3">   
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">     
+              <!-- Links -->
+              <h5 class="lead font-weight-bold">Profesores</h5>
+      
+              <ul class="list-unstyled">
+              <li>
+                  <strong>Liliana Cuny Cuenta Pletsch</strong> 
+              </li>
+              <li>
+                  <strong>Sergio Gramajo</strong> 
+              </li>
+              <li>
+                  <strong>Alberto Ristoff</strong> 
+              </li>
+              <li>
+                  <strong>Jorge Roa</strong> 
+              </li>
+              </ul> 
+          </div>
+          <!-- Grid column -->
+      
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">  
+              <!-- Links -->
+              <h5 class="lead font-weight-bold">Alumnos</h5>
+      
+              <ul class="list-unstyled">
+              <li>
+                  <a class="text-black-50" href="https://www.linkedin.com/in/rodrigo-daniel-cerdan-/"> <strong>Cerdan Rodrigo</strong></a>
+              </li>
+              <li>
+                  <a class="text-black-50" href="#!"><strong>Duarte Elias</strong></a>
+              </li>
+              <li> 
+                  <a class="text-black-50" href="#!"><strong>Perez Carla</strong></a>
+              </li>
+              <li>
+                  <a class="text-black-50" href="https://ar.linkedin.com/in/sandinosanchez?trk=people-guest_profile-result-card_result-card_full-click"><strong>Sanchez Sandino</strong></a>
+              </li>
+              <li>
+                  <a class="text-black-50" href="#!"><strong>Silva Otto</strong></a>
+              </li>
+              </ul>   
+          </div>
+          <!-- Grid column -->      
+          </div>
+          <!-- Grid row -->       
+      </div>
+      <!-- Footer Links -->
+      
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3 blue-grey lighten-3 text-black-50">© 2019 Copyright:
+          <a href="http://www.frre.utn.edu.ar"> UTN-FRRE</a>
+      </div>
+      <!-- Copyright -->     
+  </footer>
+  <!-- Footer -->
+
+  <!-- SCRIPTS -->    
+  <!-- JQuery -->
+  <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="./js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="./js/mdb.min.js"></script>
+  <!-- Project Scripts --> 
+  <script src="./js/simulador/inicio.js"></script>
+  <script src="./js/simulador/config.js"></script>
+  <!-- SCRIPTS -->
+</body>
+</html>
