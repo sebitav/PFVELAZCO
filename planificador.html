@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="./css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="./css/simulador/config.css" rel="stylesheet">
+    <link href="./css/simulador/presentacion.css" rel="stylesheet">
+    <link href="./css/roundslider.min.css" rel="stylesheet" />
+    <!-- Resources Amcharts-->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="./js/responsive.min.js" type="text/javascript"></script>
+
+    <title>Simulador</title>
+</head>
+<body>
+    <!--Cabecera-->
+    <nav class="navbar navbar-dark white" id="cabecera">
+        <a class="navbar-brand mx-0" href="./index.html">
+            <img src="./img/coder_logo.png" class="px-5" height="80" alt="utn-logo">
+        </a>
+        <h2 class="lead blue-grey-text pl-5 col-md-6 d-flex justify-content-center">
+            <strong>
+                Simulador de Planificación de procesos
+            </strong>
+        </h2> 
+        <img src="./img/logoC1G6.png" class="d-flex justify-content-end mx-5 px-4" height="80" alt="C1G6-logo">  
+    </nav>
+    <!--Cabecera-->
+
+    <div class="container-fluid">
+        <!--MENU-->
+        <div class="container-fluid mt-4 simuTab">
+            <ul class="nav nav-tabs nav-justified row py-2" id="navmenu">   
+                <div class="col-sm-12 col-md-3">
+                    <li class="nav-item">
+                        <a class="text-black-50" onclick="location.reload();">
+                            <button class="btn btn-outline-light-blue z-depth-0 waves-effect m-0">Nueva Configuración</button>
+                            <span class="sr-only">(current)</span>
+                        </a>    
+                    </li> 
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <li class="nav-item">
+                        <a id="config-btna" href="#" class="nav-link active text-primary border-primary border-bottom-0 d-flex justify-content-center">Configuración</a>
+                    </li>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <li class="nav-item">
+                        <a id="process-btna" href="#cargaprocesos" class="nav-link active">Carga de Procesos</a>
+                    </li>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <li class="nav-item">
+                        <a id="presentation-btna" href="#presentacion" class="nav-link active">Presentación</a>
+                    </li> 
+                </div>       
+            </ul>
+        </div>   
+        <!--MENU-->
+        <!--PLANIFICADOR-->
+        <div class="container-fluid">
+            <!--Configuracion del planificador - Pestaña 1-->  
+            <div class="col-sm-12 my-2 d-flex justify-content-center">
+                <div class="alert alert-danger alert-dismissible fade hide alertSimu d-flex justify-content-center m-0 px-3" role="alert">
+                    <strong class="textoAlertSimu px-auto">Error Genérico</strong>
+                    <button type="button" class="close p-1" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div> 
+            </div>
+            <div class="row" id="configuracion">
+                <!--Form de Configuracion-->
+                <div class="col-sm-12 col-md-6 px-0">
+                    <form class="md-form input-group mt-2" role="form" autocomplete="off">
+                        <div class="col-md-12 d-flex align-items-center flex-column px-3">
+                            <!--Card content-->
+                            <div class="card" id="card-memory">
+                                <h5 class="card-header blue-grey lighten-1 white-text text-center py-4">
+                                    <strong>Configuración del Planificador</strong>
+                                </h5>     
+                                <div class="card-body px-lg-5 py-0 memorySelect">
+                                    <div class="col-sm-12 my-2 d-flex justify-content-center">
+                                        <div class="alert alert-danger alert-dismissible fade hide alertPlan d-flex justify-content-center m-0 px-3" role="alert">
+                                            <strong class="textoAlertPlan px-auto">Error Genérico</strong>
+                                            <button type="button" class="close p-1" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div> 
+                                    </div>
+                                    <div class="row ml-1">
+                                        <span class="col-md-12 px-0 lead">Selecciona la política de Planificación</span>
+                                        <select class="col-md-6 browser-default custom-select mr-3 mt-3 mb-2" id="optionAlgo">
+                                            <option class="optionPlaningOne" value="FCFS" selected>FCFS</option>
+                                            <option class="optionPlaningTwo" value="RR">RR</option>
+                                            <option class="optionPlaningThree" value="Prioridades">Prioridades</option>
+                                            <option class="optionPlaningFour" value="SJF">SJF</option>
+                                            <option class="optionPlaningFive" value="SRTF">SRTF</option>
+                                            <!-- <option class="optionPlaningSix" value="MLQ">MLQ</option>  -->        
+                                        </select> 
+                                        <div class="col-md-4 text-center fade alertRR mt-3 mb-2 px-0 disabled" id="quantumid">
+                                            <input type="text" class="form-control w-75 quantumIn" placeholder="Quantum">
+                                        </div>
+                                        <p class="text-muted p-0">El algoritmo por defecto es FCFS.</p>
+                                    </div>
+
+                                    <div class="mt-4 mb-2">
+                                        <span class="lead">Definir tamaño de memoria para el Planificador</span>
+                                        <div class="md-form mt-3 mb-2">
+                                            <input type="number" min=1 max=8192 id="tam-memory" class="form-control w-75">
+                                            <label for="numberExample">Definir tamaño en MB</label>
+                                        </div>
+                                        <p class="text-muted">El tamaño total de la memoria es de 8192 MB.</p>
+                                        
+                                    </div>
+
+                                    <div id="btn-memory" class="mt-3 mb-2">
+                                        <span class="lead">Definir tamaño de memoria reservado para el SO (MB)</span>
+                                        <div class="md-form mt-3 mb-2">
+                                            <input type="number" id="tam-memory-so" class="form-control w-75">
+                                            <label for="numberExample" class="text-left">Definir tamaño en MB.</label>
+                                        </div>
+                                        <p id="p-memory" class="text-muted m-0"></p>
+                                    </div>
+
+                                    <div id="btn-type" class="row mt-4">
+                                        <span class="col-md-12 lead">Seleccione el tipo de Memoria</span>
+                                        <select class="col-md-6 browser-default custom-select mt-3 mx-3" id="optionType" name="tipo_memoria">
+                                            <option class="optionTypeTwo" value="Variable" selected>Variable</option>
+                                            <option class="optionTypeOne" value="Fija">Fija</option>
+                                        </select> 
+                                        <div class="col-md-4 text-center fade hide alertMem mt-2 ml-1 px-0">
+                                            <a id="btn-parts" class="btn btn-outline-light-blue p-2 waves-effect waves-light disabled">Particiones</a>
+                                        </div>
+                                        <p class="text-muted ml-3 mt-2">El tipo de memoria por defecto es Variable.</p>
+                                    </div>
+
+                                    <div id="btn-fit" class="row mt-3">
+                                    <span class="lead col-sm-12 ml-3 p-0">Selecciona el ajuste de la Memoria</span>
+                                    <select class="col-md-6 browser-default custom-select mx-3 mt-3" id="optionSet" name="algoritmo_memoria">
+                                        <option class="optionFitThree" value="First Fit" selected>First Fit</option>
+                                        <option class="optionFitTwo" value="Worst Fit">Worst Fit</option>
+                                        <option class="optionFitOne d-none" value="Best Fit">Best Fit</option>
+                                    </select>
+                                    <p class="text-muted ml-3 mt-2">El ajuste de memoria por defecto es First Fit.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <div class="alert alert-danger alert-dismissible fade hide alertPlan" role="alert">
+                                        <strong class="textoAlertPlan d-flex justify-content-center">Error Genérico</strong>
+                                        <button type="button" class="close p-1" data-dismiss="alert" aria-label="Close">
+                                            <span class="ml-3" aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--Confirmar formulario--> 
+                                <div class="mb-3 d-flex justify-content-center">
+                                    <a id="btnconfirmar" class="btn btn-outline-light-blue z-depth-0 waves-effect w-75 d-none" type="submit">Confirmar</a>  
+                                </div>
+                                <!--Confirmar formulario--> 
+                            </div>
+                            <!--Card content-->           
+                        </div>
+                    </form>
+                </div>  
+                <!--Form de Configuracion-->  
+                <!--Form de Particiones Fijas-->
+                <div class="col-sm-12 col-md-6 px-0">
+                    <form class="md-form input-group mt-2" id="form-fijas" role="form" autocomplete="off">     
+                        <div class="col-sm-12 col-md-12 px-3">
+                            <!--Generación de Particiones-->
+                            <div class="card d-none" id="partfijas">
+                                <h5 class="card-header blue-grey lighten-1 white-text text-center py-4 mb-4">
+                                    <strong id="title-card">Generación de Particiones</strong>
+                                </h5>     
+                                <div class="card-body px-lg-5 pt-0 memorySelect">
+                                    <div class="mt-2 alert alert-info alert-dismissible fade hide alertMem d-none" role="alert">
+                                        <strong class="textoAlertMem">Si desea agregar nuevas particiones, por favor realice una nueva configuración</strong>
+                                        <button type="button" class="close p-1" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <span class="lead" id="memoria"></span><br> 
+                                            <span class="lead" id="memoriacpu"></span><br> 
+                                            <span class="lead" id="porcentajeTotal"></span>
+                                        </div>
+                                        <div class="col-sm-12 col-md-8 mt-3">
+                                            <div class="md-form">
+                                                <input type="number" min=1 max=4096 id="cantpart" class="form-control w-75">
+                                                <label for="numberExample">Cantidad de particiones</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4 p-0 d-flex justify-content-center">
+                                            <button class="btn btn-outline-light-blue z-depth-0 waves-effect btn-block my-4 btn-add-part" type="button">Agregar</button>  
+                                        </div>
+                                    </div> 
+                                    <div class="controls mt-3 d-none" id="controlidpart">
+                                        <div class="entry input-group-prepend row inputMemory d-flex justify-content-center" id="add-field">
+                                        </div>
+                                        <span class="lead d-flex justify-content-center mt-2" id="disponible"></span>
+                                    </div>
+                                
+                                    <div class="alert alert-danger alert-dismissible fade hide alertPart" role="alert">
+                                        <strong class="textoAlertPart d-flex justify-content-center">Error Genérico</strong>
+                                        <button type="button" class="close p-1" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>       
+                                <!--Confirmar formulario--> 
+                                <div class="d-flex justify-content-center" id="btn-asignar">
+                                    <button class="btn btn-outline-light-blue z-depth-0 waves-effect w-75 btn-asignar" type="button">Asignar</button>  
+                                </div>
+                                <!--Confirmar formulario--> 
+                                </div> 
+                            </div>
+                            <!--Generación de Particiones--> 
+                        </div>  
+                    </form>
+                </div> 
+            <!--Form de Particiones Fijas--> 
+            </div>
+            <!--Configuracion del planificador - Pestaña 1-->
+            <!--Carga de Procesos - Pestaña 2-->
+            <div class="tab-pane col-sm-12 col-md-12" id="cargaprocesos" role="tabpanel" aria-labelledby="contact-tab">
+                <div class="col-sm-12 col-md-12 p-2">
+                    <div class="my-3 card border-blue-grey">
+                        <div class="card-header blue-grey lighten-1 text-white lead">
+                        Configuración del Planificador
+                        </div>
+                        <div class="card-body">
+                            <div class="row ml-2">
+                                <button type="button" class="btn mdb-color text-white mr-2" disabled>Tamaño</button>
+                                <button type="button" class="btn btn-outline-secondary tamInfo mr-2" disabled> MB</button>
+                                <!-- <div class="col-sm-12 col-md-3 p-0 d-flex justify-content-center">
+                                </div> -->
+                                <button type="button" class="btn mdb-color text-white mr-2" disabled>Algoritmo</button>
+                                <button type="button" class="btn btn-outline-secondary algoInfo mr-2" disabled></button>
+                                <!-- <div class="col-sm-12 col-md-3 p-0 d-flex justify-content-center">
+                                </div> -->
+                                <button type="button" class="btn mdb-color text-white mr-2" disabled>Memoria</button>
+                                <button type="button" class="btn btn-outline-secondary memInfo mr-2" disabled> </button>
+                                <!-- <div class="col-sm-12 col-md-3 p-0 d-flex justify-content-center">
+                                </div> -->
+                                <button type="button" class="btn mdb-color text-white mr-2" disabled>Ajuste</button>
+                                <button type="button" class="btn btn-outline-secondary ajuInfo mr-2" disabled></button>
+                                <!-- <div class="col-sm-12 col-md-3 p-0 d-flex justify-content-center">  
+                                </div> -->
+                            </div>
+                            <div class="row d-flex justify-content-left pl-2 config_part_size">   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4" id="contenido2">
+                    <div class="col-sm-12 col-md-12 p-1">
+                        <div class="card mb-4 p-0 mt-3 mx-2">
+                            <h2 class="card-header blue-grey lighten-1 text-center text-white py-4">Tabla de Procesos</h2>
+                            <div class="card-body px-2">
+                                <div class="table-editable app-table-responsive">
+                                    <span class="table-add float-right my-2 mr-2">
+                                    <a href="#!" class="text-success d-flex justify-content-start" id="btn-añadir">
+                                        <p class="lead mr-2">Agregar Proceso</p>
+                                        <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
+                                    </a>
+                                    </span>
+                                    <span id="interval-prio" class="table-add float-left text-success my-2 ml-4">                           
+                                        <p class="lead mr-2">Prioridad: [Min=0 Max=3]</p> 
+                                    </span>
+                                    <table id="tableID"class="table table-bordered table-hover table-responsive-lg w-100 text-center">
+                                        <thead class="text-white mdb-color lighten-2">
+                                            <tr id="tr-rafaga" class="md-form">
+                                            <th class="text-center">ID</th>
+                                            <th id="th-prio" class="text-center">Prioridad</th>
+                                            <th class="text-center">Tamaño (MB)</th>
+                                            <th class="text-center">T. de Arribo</th>
+                                            <th class="text-center">Ciclo de Vida CPU-E/S-..-/CPU</th>
+                                            <th class="text-center">Agregar Ráfaga</th>
+                                            <th class="text-center">Eliminar Ráfaga</th>
+                                            <th class="text-center">Confirmar/Eliminar Proceso</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbodyID">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-sm-12 my-2 d-flex justify-content-center">
+                                    <div class="alert alert-danger alert-dismissible fade hide alertTable d-flex justify-content-center m-0 px-3" role="alert">
+                                        <strong class="textoAlertTable px-auto">Error Genérico</strong>
+                                        <button type="button" class="close p-1" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 mt-3 mb-2 d-flex justify-content-center btn-c">
+                        <a class="btn btn-outline-blue-grey text-white fadeInLeft wow rgba-black-light z-depth-0 waves-effect w-50 px-1" type="submit" id="btnconfirmar2">Confirmar</a>  
+                    </div>
+
+                </div>
+            </div>    
+            <!--Carga de Procesos - Pestaña 2-->
+            <!--Presentacion - Pestaña 3-->
+            <div class="tab-pane" id="presentacion" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="my-3 card border-blue-grey">
+                            <div class="card-header blue-grey lighten-1 text-white lead">
+                            Configuración del Planificador
+                            </div>
+                            <div class="card-body">
+                                <div class="row ml-2">
+                                    <button type="button" class="btn mdb-color text-white mr-2" disabled>Tamaño</button>
+                                    <button type="button" class="btn btn-outline-secondary tamInfo mr-2" disabled> MB</button>
+                                    <!-- <div class="col-sm-12 col-md-3 p-0 d-flex justify-content-center">
+                                    </div> -->
+                                    <button type="button" class="btn mdb-color text-white mr-2" disabled>Algoritmo</button>
+                                    <button type="button" class="btn btn-outline-secondary algoInfo mr-2" disabled></button>
+                                    <!-- <div class="col-sm-12 col-md-3 p-0 d-flex justify-content-center">
+                                    </div> -->
+                                    <button type="button" class="btn mdb-color text-white mr-2" disabled>Memoria</button>
+                                    <button type="button" class="btn btn-outline-secondary memInfo mr-2" disabled> </button>
+                                    <!-- <div class="col-sm-12 col-md-3 p-0 d-flex justify-content-center">
+                                    </div> -->
+                                    <button type="button" class="btn mdb-color text-white mr-2" disabled>Ajuste</button>
+                                    <button type="button" class="btn btn-outline-secondary ajuInfo mr-2" disabled></button>
+                                    <!-- <div class="col-sm-12 col-md-3 p-0 d-flex justify-content-center">  
+                                    </div> -->
+                                </div>
+                                <div class="row d-flex justify-content-left pl-2 config_part_size">   
+                                </div>
+                                <div class="row d-flex justify-content-left ml-2" id="config_process">   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="row" id="contenido3">
+                    <div class="col-sm-12 col-md-12">
+                        <div>
+                            <h1 class="col-sm-12 d-flex justify-content-center blue-grey-text display-4 mt-4">Diagrama de Gantt</h1>
+                            <div id="chartdiv-d">
+                            </div>
+                        </div>
+                        </div>
+                            <h1 class="col-sm-12 d-flex justify-content-center blue-grey-text display-4 mt-5">Mapa de Colas</h1>
+                            <div id="chartdiv2">
+                            </div>
+                        
+                        <h1 class="col-sm-12 d-flex justify-content-center blue-grey-text display-4 mt-5">Mapa de Memoria</h1>
+                        <div class="container">
+                            <div id="chartdiv3"></div>
+                            <div class="control container">
+                                <p style="text-align: center">Tiempo del clock</p>
+                                <div id="shape" onclick="torta()"></div>
+                            </div>
+                        </div>  
+                    </div>
+                    
+                    <div class="col-lg-12 mt-5">
+                        <h3 class="ml-3 d-flex justify-content-center">Tiempos de los Procesos</h3>
+                        <table id="t-result" class="table table-bordered table-hover table-responsive-md text-center">
+                            <thead class="text-white blue-grey lighten-1">
+                                <tr>
+                                <th scope="col">Proceso</th>
+                                <th scope="col">Momento que deja la CPU</th>
+                                <th scope="col">Tiempo de Arribo</th>
+                                <th scope="col">Tiempo Espera</th>
+                                <th scope="col">Tiempo Retorno</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <label class="lead" for="cpu"><b>Porcentaje Utilización CPU:</label>
+                        <label class="lead" id="cpu"></label>
+                        <h5 class="timeReturn"></h5>
+                    </div>
+                </div>     
+            </div>     
+            <!--Presentacion - Pestaña 3-->
+        </div>
+        <!--PLANIFICADOR-->
+    </div> 
+    <!-- Footer -->
+    <footer class="page-footer font-small text-black-50 blue-grey lighten-5 pt-4 w-100 border">
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+        <!-- Grid row -->
+        <div class="row">
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3"> 
+            <!-- Content -->
+            <h5 class="lead font-weight-bold">Trabajo CoderHouse curso JavaScript</h5>
+            <p class="pt-3"><strong></strong> </p> 
+            <p><strong></strong></p>  
+        </div>
+        <!-- Grid column --> 
+        <hr class="clearfix w-100 d-md-none pb-3">   
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">     
+            <!-- Links -->
+            <h5 class="lead font-weight-bold"></h5>
+        
+        </div>
+        <!-- Grid column -->
+    
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">  
+            <!-- Links -->   
+        </div>
+        <!-- Grid column -->      
+        </div>
+        <!-- Grid row -->       
+    </div>
+    <!-- Footer Links -->
+    
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 blue-grey lighten-3 text-black-50">© 2023 Copyright:
+    </div>
+    <!-- Copyright -->     
+    </footer>
+    <!-- Footer -->
+
+    <!-- SCRIPTS -->    
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="./js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="./js/mdb.min.js"></script>
+    <!-- Project Scripts --> 
+    <script src="./js/simulador/sim.js"></script>
+    <script src="./js/simulador/proceso.js"></script>
+    <script src="./js/simulador/memoria.js"></script>
+    <script src="./js/simulador/inicio.js"></script>
+    <script src="./js/simulador/config.js"></script>
+    <script src="./js/simulador/main.js"></script>
+    <script src="./js/roundslider.min.js"></script>
+    <!-- SCRIPTS -->
+</body>
+</html>

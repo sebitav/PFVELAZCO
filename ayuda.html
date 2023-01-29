@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="./css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="./css/simulador/ayuda.css" rel="stylesheet">
+
+    <!-- Resources Amcharts-->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+    <title>Simulador | Ayuda</title>
+</head>
+<body>
+  <!--Cabecera-->
+  <nav class="navbar navbar-dark white" id="cabecera">
+      <a class="navbar-brand mx-0" href="./index.html">
+          <img src="./img/coder_logo.png" class="px-5" height="80" alt="utn-logo">
+      </a>
+      <h2 class="lead blue-grey-text pl-5 col-md-6 d-flex justify-content-center">
+          <strong>
+              Simulador de Planificación de procesos
+          </strong>
+      </h2> 
+      <img src="./img/logoC1G6.png" class="d-flex justify-content-end mx-5 px-4" height="80" alt="C1G6-logo">  
+  </nav>
+  <!--Cabecera-->
+  <div class="view">
+    <!-- Titulo -->
+    <div class="jumbotron-fluid">
+      <div class="container"> 
+        <h2 class="display-4 d-flex justify-content-center lead blue-grey-text mt-3 mb-3">Primeros Pasos</h2>   
+        <h4 class="lead blue-grey-text d-flex justify-content-center text-justify">En esta sección encontrara toda la ayuda que necesite y recomendaciones para iniciar con el uso de nuestra aplicación</h4>
+      </div> 
+    </div>  
+    <div class="container"> 
+      <div class="row blue-grey-text">
+        <!-- Introduccion -->
+        <div class="col-md-12">
+          <h5 class="display-4 lead blue-grey-text mt-5 mb-3 d-flex justify-content-center">Introducción</h5>
+          <p class="lead ">El simulador de planificación de procesos consta de una sección de <strong><i>Configuración</i></strong> donde el usuario podra gestionar tanto la asignación de memoria deseada como la politica de planificación para los procesos que desee simular.
+            Una vez finalizada la configuración, el usuario podra avanzar a la sección de <strong><i>Carga de Procesos</i>
+            donde podrá realizar la carga de procesos correspondientes y una vez finalizado, podrá avanzar a la sección de</strong><strong><i>Presentación</i></strong> donde podrá ver los esquemas correspondientes.
+          </p>
+          <p class="lead">El simulador consta de un barra de ayuda que permitira al usuario:
+            <img src="./img/simu0.png" class="img-fluid" alt="barra_config">
+            <ul class="lead">
+              <li>Reiniciar la configuración en caso de haberse equivocado en algún punto de la configuración.</li>
+              <li>Conocer en que sección se encuentra.</li>
+              <li>Visualizar la carga de trabajo elegida junto a los gráficos correspondientes.</li>
+            </ul>
+
+            <h3 class="lead blue-grey-text"><b>Recomendaciones</b></h3>
+            <ul class="lead">
+              <li>
+                  En caso de haberse equivocado al momento de seleccionar una opción durante la gestión de su configuración, presionar el botón <i>Nueva Configuración</i> y empezar de nuevo. Dado que para esta primer versión de la aplicación la carga de datos debe realizarce siguiendo estrictamente su orden.
+              </li>
+              <li>
+                El flujo del simulador es de un solo sentido, por lo tanto no podra avanzar a una siguiente sección sin haber finalizado la carga de datos.
+              </li>
+              <li>
+                Recalcando que el flujo del simulador es de un solo sentido, no podra regresar a una sección anterior para evitar errores. En caso de querer volver a una sección anterior deberá realizar una nueva configuración
+              </li>
+            </ul>  
+          </p>
+        </div>
+        <!-- Memoria -->
+          <div class="col-sm-12 col-md-12">
+              <h5 class="display-4 lead blue-grey-text mt-5 mb-3 d-flex justify-content-center">Configuración del Planificador</h5>
+              <p class="lead text-justify">En esta sección se realíza la gestión de configuración del planificador donde debe especificar: 
+                <ul>
+                  <li>La política de Planificación</li>
+                  <li>Definir la memoria asignada para la CPU</li>
+                  <li>Definir el tamaño de memoria del planificador</li>
+                  <li>Seleccionar el tipo de memoria</li>
+                  <li>Seleccionar el ajuste de memoria</li>
+                </ul>
+                <p class="text-justify">
+                  Es importante respetar el orden de los inputs al momento de ingresar los datos, ya que de esa manera se evita la aparición de errores al momento de su ejecución. Recordamos que para esta versión de la aplicación su estabilidad y performance es sensible al orden de ingreso de los datos.
+                </p>
+                Cada sección posee sus valores por defecto y las opciones que obtendrá dependerán de la selección que realice. Por ello es importante el orden de su selección.
+              </p>
+          </div>
+          <!-- Configuración Seccion 1-->
+          <div class="row mx-2">
+            <!--Algoritmos-->
+              <div class="col-sm-12 col-md-6 px-3">
+                <img src="./img/simu1.png" class="img-fluid" alt="algoritmos">
+              </div>
+              <div class="col-sm-12 col-md-6 my-auto px-3">
+                <p class="lead my-2">Los algoritmos de planificación que puede elegir son:
+                    <ul>
+                      <li>FCFS</li>
+                      <li>Round Robin</li>
+                      <li>Por Prioridades</li>
+                      <li>Por Prioridades SJF</li>
+                      <li>Por Prioridades SRTF</li>
+                      <li>Multinivel sin retroalimentación</li>
+                    </ul>
+                    El algoritmo de planificación por defecto es FCFS.
+                </p>
+              </div>
+            <!--Algoritmos-->
+            <!--Quantum-->
+              <div class="col-sm-12 col-md-6 my-auto px-3">
+                  <img src="./img/simu2.png" alt="quantum" class="img-fluid mt-4">
+              </div>
+              <div class="col-sm-12 col-md-6 my-auto px-3">
+                <p class="text-justify my-3">En caso de haber seleccionado el algoritmo Round Robin, le aparecerá en pantalla un input donde deberá ingresar un valor de quantum mayor a cero.
+                </p>
+              </div>
+              <!--Quantum-->
+              <!--Memoria CPU-->
+              <div class="col-sm-12 col-md-6 my-auto px-3">
+                <img src="./img/simu3.png" alt="mem-cpu" class="img-fluid mt-4">
+              </div>
+              <div class="col-sm-12 col-md-6 my-auto">
+                <p class="lead mt-3">El rango permitido para el tamaño de memoria para la CPU es el siguiente:
+                  <ul class="pl-4">
+                    <li>El tamaño mínimo permitido es de 512 MB.</li>
+                    <li>El tamaño máximo permitido es de 4096 MB.</li>
+                    <li>En caso de cometer algún tipo de error, el campo cuenta con validaciones y mensajes de error que lo ayudarán a guiarse.</li>
+                  </ul>
+                </p>
+              </div>
+              <!--Memoria CPU-->
+              <!--Memoria Planificador-->
+              <div class="col-sm-12 col-md-6 my-auto px-3">
+                <img src="./img/simu5.png" alt="mem-plan" class="img-fluid mt-4">
+              </div>
+              <div class="col-sm-12 col-md-6 my-auto px-3">
+                <p class="lead m-2">El tamaño de memoria para el planificador consta de las siguientes opciones:
+                  <ul class="pl-4">
+                    <li>El tamaño total de la memoria es de 8192 MB.</li>
+                    <li>El tamaño para el planificador dependera del tamaño disponible que se definira de la resta entre el tamaño total y el tamaño definido para la CPU.</li>
+                    <li>En caso de cometer algún tipo de error, el campo cuenta con validaciones y mensajes de error que lo ayudaran a guiarse.</li>
+                  </ul>
+                </p>
+              </div>
+              <!--Memoria Planificador-->
+              <!--Tipo y Ajuste-->
+              <div class="col-sm-12 col-md-6 my-4 px-3">
+                <img src="./img/simu4.png" alt="fit-type" class="img-fluid fit-type">
+              </div>
+              <div class="col-sm-12 col-md-6 my-auto px-3"> 
+                  <p class="lead">El Tipo de Memoria consta de las siguientes opciones:
+                    <ul>
+                      <li>Variable</li>
+                      <li>Fija</li>
+                    </ul>
+                  </p>
+                  <p class="lead">El Ajuste de memoria consta de las siguientes opciones:
+                    <p>
+                      En caso de haber seleccionado Memoria Variable:
+                      <ul>
+                        <li>First Fit</li>
+                        <li>Worst Fit</li>
+                      </ul>
+                    </p> 
+                    <p>
+                      En caso de haber seleccionado Memoria Fija:
+                      <ul class="">
+                        <li>First Fit</li>
+                        <li>Best Fit</li>
+                      </ul> 
+                    </p>
+              </div>
+              <!--Tipo y Ajuste-->
+              <!--Particiones Fijas-->
+              <div class="col-sm-12 col-md-6 my-auto px-3">
+                <img src="./img/simu-part.png" alt="particiones" class="img-fluid">
+              </div> 
+              <div class="col-sm-12 col-md-6 my-auto px-3"> 
+                  <p class="text-justify mt-3">En caso de haber seleccionado el tipo de memoria fija, le aparecerá en pantalla un botón que le permitira realizar la generación de particiones correspondientes. <br>
+                    Recordar que en caso de haberse equivocado, reiniciar la configuración del simulador para evitar errores al momento de la carga de los datos.</p>
+              </div>  
+              <!--Particiones Fijas-->   
+              <!--Confirmar-->
+              <div class="col-sm-12 col-md-6 my-auto px-3">
+                <img src="./img/btn-confirmar.png" alt="btn-confirmar" class="img-fluid">
+              </div> 
+              <div class="col-sm-12 col-md-6 my-auto px-3"> 
+                  <p class="text-justify mt-3">
+                    El botón <strong><i>Confirmar</i></strong> aparecerá y estará habilitado una vez que todos los datos solicitados hayan sido ingresados de manera correcta.
+                  </p>
+              </div> 
+              <!--Confirmar--> 
+              <!-- Generador de Particiones--> 
+              <div class="col-sm-12 col-md-6 mt-3">
+                <img src="./img/simu7.png" alt="particiones" class="img-fluid">
+              </div>
+              <div class="col-sm-12 col-md-6 my-auto">
+                <p class="text-justify mt-4">En esta sección podrá ingresar la cantidad de particiones que desee, siempre respetando un limite máximo de particiones que dependerá del tamaño de memoria que haya ingresado con anterioridad. 
+                  <br><br>
+                  De acuerdo al tamaño de memoria elegida y a la cantidad de particiones que haya definido, el simulador por defecto realizará la división del tamaño de la memoria entre cada partición. Aunque tambien le da la opción de poder definirlo por Usted mismo.
+                  <br><br>
+                  Una vez que se hayan agregado las particiones, el simulador mostrará en pantalla información adicional como ser:
+                  <ul>
+                    <li>El tamaño de memoria del planificador definido por el usuario.</li>
+                    <li>El tamaño disponible de la memoria una vez que se hayan asignado las particiones.</li>
+                    <li>El porcentaje de la memoria total utilizado por la CPU.</li>
+                    <li>El porcentaje de la memoria total utilizado por el Planificador.</li>
+                  </ul>
+                </p>
+              </div>
+              <!-- Generador de Particiones-->
+          </div>  
+        <!-- Memoria -->
+        <!-- Procesos -->
+        <div class="col-sm-12 col-md-12 mt-5">
+            <h5 class="display-4 lead blue-grey-text mb-3 d-flex justify-content-center">Carga de Procesos</h5>
+            <p class="lead text-justify">En esta sección se realíza la gestión de la carga de los procesos donde debe asignar la cantidad de procesos deseados para el planificador.</p>
+        </div>       
+        <div class="col-sm-12 col-md-6 my-auto">
+          <img src="./img/simu6.png" alt="configuracion" class="img-fluid">
+        </div>
+        <div class="col-sm-12 col-md-6 my-auto">
+          <p class="text-justify">
+            Como se había mencionado en la Introducción, la aplicación consta de un solo flujo, por lo tanto para que pueda volver a una sección anterior debera realizar una nueva configuración y realizar la carga de datos nuevamente. <br>
+            Es por ello que se desarrollo este menú que muestra la configuración actual del planificador definido, para que de esa forma tenga presente los datos que ha definido.
+        </p>
+        </div>  
+        <!-- Procesos Seccion 1-->
+        <div class="col-sm-12 col-md-6 my-auto">
+          <img src="./img/proc1.png" alt="ciclo_vida_proceso" class="img-fluid">
+        </div>
+        <div class="col-sm-12 col-md-6 my-auto">
+          <p class="text-justify">
+            En la <strong><i>Tabla de Procesos</i></strong> podrá asignar dinámicamente la cantidad de procesos deseados presionando el botón <strong><i>Asignar Proceso</i></strong>. 
+        </p>
+        </div> 
+        <!-- Procesos Seccion 1-->
+        <!-- Procesos Seccion 2-->
+        <div class="col-md-6 mt-4">
+          <img src="./img/proc2.png" alt="ciclo_vida_proceso2" class="img-fluid">
+        </div>
+        <div class="col-md-6 mt-4 my-auto">
+          <p class="text-justify mt-3">
+            Una vez agregado un nuevo proceso podrá colocar los valores dentro de cada columna. Además dentro de la misma fila del proceso podrá tanto eliminar el proceso como asignar las ráfagas de CPU y E/S corresponientes a dicho proceso.
+            Podrá ingresar hasta un máximo de 4 ráfagas de CPU y de E/S. <br/>
+            Las ráfagas de CPU y de E/S serán agragadas de a 3, teniendo como mínimo una ráfaga dentro del proceso y eliminadas de la misma forma. 
+        </p>  
+        </div>
+        <!-- Presentación-->
+        <div class="col-sm-12 col-md-12 mt-5">
+          <h5 class="display-4 lead blue-grey-text mb-3 d-flex justify-content-center">Presentación</h5>
+          <p class="lead text-justify">En esta sección podrá visualizar los gráficos y resultados finales del planificador de acuerdo a la configuración definida anteriormente.</p>
+        </div> 
+        <div class="col-md-6 mt-4">
+          <img src="./img/gantt.png" alt="gantt" class="img-fluid">
+        </div>
+        <div class="col-md-6 mt-4 my-auto">
+          <p class="text-justify mt-3">
+          Podrá visualizar un diagrama de Gantt donde se apreciarán los procesos y ráfagas definidos de acuerdo al resultado que obtendrá de su configuración. Así como tambien las rafagas de CPU y E/S correspondientes.
+        </p>  
+        </div>
+        <!-- Presentación-->
+        <!-- Comenzar -->
+        <div class="col-md-12 mt-3 mb-2 pl-2 pr-4 mx-auto d-flex justify-content-center flex-column btn-c">
+            <a href="./planificador.html" class="btn btn-blue-grey text-white d-flex justify-content-center fadeInLeft wow rgba-black-light z-depth-0 waves-effect" type="submit" id="btn-continuar">Comenzar</a>  
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="page-footer font-small text-black-50 blue-grey lighten-5 pt-4 w-100 border">
+      <!-- Footer Links -->
+      <div class="container-fluid text-center text-md-left">
+          <!-- Grid row -->
+          <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-6 mt-md-0 mt-3"> 
+              <!-- Content -->
+              <h5 class="lead font-weight-bold">Trabajo CoderHouse curso JavaScript</h5>
+              <p class="pt-3"><strong>Simulador de procesos</strong> </p> 
+              <p><strong>Velazco Sebastian</strong></p>  
+          </div>
+          <!-- Grid column --> 
+          <hr class="clearfix w-100 d-md-none pb-3">   
+          <!-- Grid column -->
+          </div>
+          <!-- Grid column -->      
+          </div>
+          <!-- Grid row -->       
+      </div>
+      <!-- Footer Links -->
+      
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3 blue-grey lighten-3 text-black-50">© 2023 Copyright:
+      </div>
+      <!-- Copyright -->     
+  </footer>
+  <!-- Footer -->
+
+  <!-- SCRIPTS -->    
+  <!-- JQuery -->
+  <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="./js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="./js/mdb.min.js"></script>
+  <!-- Project Scripts --> 
+  <script src="./js/simulador/inicio.js"></script>
+  <script src="./js/simulador/config.js"></script>
+  <!-- SCRIPTS -->
+</body>
+</html>
