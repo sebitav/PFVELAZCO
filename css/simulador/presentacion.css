@@ -1,0 +1,16 @@
+
+.progress{
+	height: 50px;
+}
+
+#chartdiv-gantt {
+	width: 100%;
+	height: 500px;
+  }
+
+.view{
+	background-image: url('../../img/bg-2.jpg'); 
+	background-repeat: no-repeat; 
+	background-size: cover; 
+	background-position: center center;
+  }

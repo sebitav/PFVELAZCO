@@ -1,0 +1,83 @@
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.app-table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  
+  .app-table-responsive.table-bordered {
+    border: 0;
+  }
+
+.card{
+    border: none;
+}
+
+.rafagas-p{
+    width: 50px;
+    height: 35px;
+}
+
+
+#chartdiv {
+    width: 100%;
+    height: 450px;
+  }
+  
+#chartdiv2, #chartdiv3 {
+    width: 100%;
+    height: 500px;
+}
+
+#chartdiv-d {
+    width: 100%;
+    height: 450px;
+}
+
+.inputParts{
+    text-align: center;
+}
+  
+#btn-parts, .btn-add-parts{
+    width: 148px
+}
+
+.textoAlertMemory {
+   max-width: 511px;
+}
+#shape  {
+    height: 160px !important;
+    width: 100% !important;
+    overflow: hidden;
+    padding: 10px;
+}
+#shape .rs-container  {
+    left: 50%;
+    margin-left: -300px;
+}
+#shape .rs-tooltip  {
+    top: 100px;
+    font-weight:bold;
+}
+#shape .rs-range-color  {
+    background: rgb(255,136,0);
+background: linear-gradient(281deg, rgba(255,136,0,1) 0%, rgba(14,106,154,1) 39%, rgba(255,0,202,1) 100%);
+}
+#shape .rs-path-color  {
+background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 1) 0%, rgba(169, 173, 174, 1) 34%, rgba(255, 255, 255, 1) 66%, rgba(5, 0, 0, 1) 100%);
+}
+#shape .rs-handle  {
+background: radial-gradient(ellipse at center, rgba(228, 228, 228, 1) 0%, rgba(179, 179, 179, 1) 34%, rgb(102, 91, 98) 100%);
+}
+#shape .rs-border  {
+border-color: white;
+}

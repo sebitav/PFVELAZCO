@@ -1,0 +1,18 @@
+.view{
+    background-image: url('../../img/bg-2.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center center;
+  }
+ 
+  #btn-continuar{
+    width: 100%;
+  }
+
+  .btn-c{
+    max-width: 500px;
+  }
+
+  /* .fit-type{
+    width: 100%;
+  } */
